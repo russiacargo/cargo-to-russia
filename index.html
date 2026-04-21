@@ -31,10 +31,124 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 50;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 76px;
+            height: 76px;
+            text-decoration: none;
+            isolation: isolate;
+        }
+
+        .whatsapp-float__core,
+        .whatsapp-float__ripple {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+        }
+
+        .whatsapp-float__core {
+            inset: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.34), transparent 32%),
+                linear-gradient(145deg, #34eb7a 0%, #25d366 52%, #149647 100%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow:
+                0 20px 42px rgba(20, 150, 71, 0.34),
+                0 8px 22px rgba(7, 94, 84, 0.2),
+                inset 0 -4px 12px rgba(7, 94, 84, 0.22);
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .whatsapp-float__ripple {
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.3) 0%, rgba(37, 211, 102, 0.14) 45%, rgba(37, 211, 102, 0) 72%);
+            animation: whatsapp-ripple 2.8s ease-out infinite;
+        }
+
+        .whatsapp-float__ripple--two {
+            animation-delay: 1.4s;
+        }
+
+        .whatsapp-float__icon {
+            width: 34px;
+            height: 34px;
+            color: #fff;
+            filter: drop-shadow(0 2px 4px rgba(7, 94, 84, 0.22));
+        }
+
+        .whatsapp-float:hover .whatsapp-float__core {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow:
+                0 24px 48px rgba(20, 150, 71, 0.4),
+                0 10px 24px rgba(7, 94, 84, 0.24),
+                inset 0 -4px 12px rgba(7, 94, 84, 0.24);
+        }
+
+        .whatsapp-float:focus-visible {
+            outline: none;
+        }
+
+        .whatsapp-float:focus-visible .whatsapp-float__core {
+            box-shadow:
+                0 0 0 5px rgba(255, 255, 255, 0.9),
+                0 0 0 9px rgba(37, 211, 102, 0.3),
+                0 20px 42px rgba(20, 150, 71, 0.34);
+        }
+
+        @keyframes whatsapp-ripple {
+            0% {
+                transform: scale(0.72);
+                opacity: 0;
+            }
+
+            18% {
+                opacity: 0.55;
+            }
+
+            100% {
+                transform: scale(1.28);
+                opacity: 0;
+            }
+        }
         
         @media (min-width: 1280px) {
             .container {
                 max-width: 1280px !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .whatsapp-float {
+                right: 16px;
+                bottom: 16px;
+                width: 68px;
+                height: 68px;
+            }
+
+            .whatsapp-float__core {
+                inset: 5px;
+            }
+
+            .whatsapp-float__icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-float__core,
+            .whatsapp-float__ripple {
+                transition: none;
+                animation: none;
             }
         }
     </style>
@@ -56,7 +170,7 @@
         
         <div class="flex items-center space-x-4">
             <a href="#tracking" class="hidden md:block border border-secondary text-secondary px-4 py-2 rounded hover:bg-secondary hover:text-white transition">Track Shipment</a>
-            <a href="#quote" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-600 transition">Get a Quote</a>
+            <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-4 py-2 rounded hover:bg-red-600 transition">Get a Quote</a>
         </div>
     </header>
 
@@ -78,7 +192,7 @@
                 <p class="text-lg mb-8">Looking to ship cargo from Dubai to Russia? Our expert logistics solutions ensure timely and secure delivery to major Russian cities, including Moscow, St. Petersburg, and Vladivostok.</p>
                 
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#quote" class="bg-primary text-white px-6 py-3 rounded text-center hover:bg-red-600 transition">Get Free Quote Now</a>
+                    <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-6 py-3 rounded text-center hover:bg-red-600 transition">Get Free Quote Now</a>
                     <a href="#services" class="bg-white text-secondary px-6 py-3 rounded text-center hover:bg-gray-100 transition">Our Services</a>
                 </div>
             </div>
@@ -183,7 +297,7 @@
                                 <span>Courier to Moscow with door-to-door service</span>
                             </li>
                         </ul>
-                        <a href="#quote" class="text-primary font-semibold hover:underline">Get a quote for Moscow shipping →</a>
+                        <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">Get a quote for Moscow shipping →</a>
                     </div>
                 </div>
                 
@@ -212,7 +326,7 @@
                                 <span>International shipping to Russia from UAE</span>
                             </li>
                         </ul>
-                        <a href="#quote" class="text-primary font-semibold hover:underline">Get a quote for Russia shipping →</a>
+                        <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline">Get a quote for Russia shipping →</a>
                     </div>
                 </div>
             </div>
@@ -400,7 +514,7 @@
                     </div>
                     
                     <div class="mt-8 text-center">
-                        <a href="#quote" class="bg-accent text-white px-6 py-2 rounded inline-block hover:bg-accent/90 transition">Get a Quote for Port-Specific Shipping</a>
+                        <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="bg-accent text-white px-6 py-2 rounded inline-block hover:bg-accent/90 transition">Get a Quote for Port-Specific Shipping</a>
                     </div>
                 </div>
             </div>
@@ -454,25 +568,24 @@
     <!-- Shipping Types Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-secondary mb-4 text-center">Comprehensive Shipping Solutions</h2>
+            <h2 class="text-3xl font-bold text-secondary mb-4 text-center">Featured Blog Post</h2>
             <p class="max-w-3xl mx-auto text-gray-600 mb-12 text-center">
-                From documents to containers, we offer a complete range of shipping services to Russia.
+                We are keeping one blog article live while the design is being finalized. The rest of the blog links are commented out for now and can be restored one by one.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
                 <!-- Card 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                     <div class="text-accent mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14-4H9m10 8H9m-4 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-secondary mb-2">Send Documents to Russia</h3>
-                    <p class="text-gray-600">Express document delivery service with tracking and signature confirmation.</p>
-                    <a href="/blog/document-shipping-dubai-to-russia/" class="mt-4 inline-block text-primary font-medium hover:underline">Learn more</a>
+                    <h3 class="text-lg font-semibold text-secondary mb-2">Shipping Cargo From Dubai to Russia: Complete Route Guide</h3>
+                    <p class="text-gray-600">Start with the main route guide for the overall Dubai to Russia shipping process, service options, customs preparation and planning direction.</p>
+                    <a href="/blog/shipping-cargo-from-dubai-to-russia-guide/" class="mt-4 inline-block text-primary font-medium hover:underline">Read the blog post</a>
                 </div>
-                
-                <!-- Card 2 -->
+                <!--
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                     <div class="text-accent mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -483,8 +596,7 @@
                     <p class="text-gray-600">Reliable parcel service to Russia with customs clearance assistance.</p>
                     <a href="/blog/parcel-delivery-dubai-to-russia/" class="mt-4 inline-block text-primary font-medium hover:underline">Learn more</a>
                 </div>
-                
-                <!-- Card 3 -->
+
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                     <div class="text-accent mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -495,8 +607,7 @@
                     <p class="text-gray-600">Full container and LCL shipping options with competitive rates.</p>
                     <a href="/blog/container-shipping-dubai-to-russia/" class="mt-4 inline-block text-primary font-medium hover:underline">Learn more</a>
                 </div>
-                
-                <!-- Card 4 -->
+
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                     <div class="text-accent mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -507,6 +618,7 @@
                     <p class="text-gray-600">Specialized auto transport services with full insurance and documentation.</p>
                     <a href="/blog/car-shipping-dubai-to-russia/" class="mt-4 inline-block text-primary font-medium hover:underline">Learn more</a>
                 </div>
+                -->
             </div>
         </div>
     </section>
@@ -804,13 +916,23 @@
     });
 </script>
 
+    <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="whatsapp-float">
+        <span aria-hidden="true" class="whatsapp-float__ripple whatsapp-float__ripple--one"></span>
+        <span aria-hidden="true" class="whatsapp-float__ripple whatsapp-float__ripple--two"></span>
+        <span aria-hidden="true" class="whatsapp-float__core">
+            <svg aria-hidden="true" viewBox="0 0 48 48" class="whatsapp-float__icon">
+                <path fill="currentColor" d="M40.8 7A23.56 23.56 0 0 0 24 0C10.9 0 .2 10.67.19 23.78c0 4.2 1.1 8.28 3.17 11.9L0 48l12.61-3.31a23.7 23.7 0 0 0 11.37 2.9h.01c13.11 0 23.78-10.67 23.79-23.79A23.7 23.7 0 0 0 40.8 7ZM23.98 43.56a19.8 19.8 0 0 1-10.07-2.76l-.72-.43-7.48 1.96 2-7.3-.47-.75a19.67 19.67 0 0 1-3.02-10.51c0-10.88 8.87-19.75 19.77-19.75 5.3 0 10.43 2.08 14.39 5.8a19.68 19.68 0 0 1 5.79 13.99c-.01 10.91-8.88 19.78-19.79 19.78m10.84-14.8c-.6-.29-3.51-1.74-4.06-1.94-.55-.19-.94-.29-1.34.29-.4.59-1.54 1.94-1.88 2.32-.34.4-.7.45-1.29.16-.59-.3-2.51-.93-4.78-2.96-1.77-1.57-2.96-3.53-3.31-4.12-.34-.59-.03-.91.27-1.21.26-.27.59-.7.89-1.04.29-.34.39-.59.59-.99.19-.4.1-.74-.05-1.04-.15-.29-1.34-3.23-1.84-4.41-.48-1.17-.97-1.01-1.34-1.02l-1.14-.02c-.4 0-1.04.15-1.58.74-.55.59-2.08 2.04-2.08 4.97 0 2.92 2.13 5.75 2.43 6.15.29.4 4.19 6.4 10.15 8.98 1.41.61 2.52.98 3.39 1.25 1.42.46 2.71.39 3.74.24 1.14-.17 3.5-1.44 4-2.83.49-1.39.49-2.58.34-2.83-.15-.25-.55-.4-1.14-.69"/>
+            </svg>
+        </span>
+    </a>
+
     <!-- CTA Section -->
     <section class="bg-secondary text-white py-16">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">Ready to Ship with Confidence?</h2>
             <p class="max-w-2xl mx-auto mb-8">Join our 1000+ satisfied customers and experience the difference for your cargo to Russia today.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#quote" class="bg-primary text-white px-8 py-3 rounded inline-block hover:bg-red-600 transition">Get a Free Quote</a>
+                <a href="https://wa.me/971544717855" target="_blank" rel="noopener noreferrer" class="bg-primary text-white px-8 py-3 rounded inline-block hover:bg-red-600 transition">Get a Free Quote</a>
                 <a href="#tracking" class="bg-white text-secondary px-8 py-3 rounded inline-block hover:bg-gray-100 transition">Track Your Shipment</a>
             </div>
         </div>
@@ -831,11 +953,12 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Our Services</h3>
                     <ul class="space-y-2">
-                        <li><a href="/blog/air-freight-dubai-to-russia/" class="text-gray-400 hover:text-white">Air Cargo to Russia</a></li>
-                        <li><a href="/blog/shipping-to-moscow-from-dubai/" class="text-gray-400 hover:text-white">Cargo Dubai to Moscow</a></li>
-                        <li><a href="/blog/courier-service-dubai-to-russia/" class="text-gray-400 hover:text-white">Courier Service to Russia</a></li>
-                        <li><a href="/blog/container-shipping-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Container to Russia</a></li>
-                        <li><a href="/blog/car-shipping-dubai-to-russia/" class="text-gray-400 hover:text-white">Ship Car to Russia</a></li>
+                        <li><a href="/blog/shipping-cargo-from-dubai-to-russia-guide/" class="text-gray-400 hover:text-white">Featured Route Guide</a></li>
+                        <!-- <li><a href="/blog/air-freight-dubai-to-russia/" class="text-gray-400 hover:text-white">Air Cargo to Russia</a></li> -->
+                        <!-- <li><a href="/blog/shipping-to-moscow-from-dubai/" class="text-gray-400 hover:text-white">Cargo Dubai to Moscow</a></li> -->
+                        <!-- <li><a href="/blog/courier-service-dubai-to-russia/" class="text-gray-400 hover:text-white">Courier Service to Russia</a></li> -->
+                        <!-- <li><a href="/blog/container-shipping-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Container to Russia</a></li> -->
+                        <!-- <li><a href="/blog/car-shipping-dubai-to-russia/" class="text-gray-400 hover:text-white">Ship Car to Russia</a></li> -->
                     </ul>
                 </div>
                 
@@ -843,10 +966,10 @@
                     <h3 class="text-lg font-semibold mb-4">Shipping Guides</h3>
                     <ul class="space-y-2">
                         <li><a href="/blog/shipping-cargo-from-dubai-to-russia-guide/" class="text-gray-400 hover:text-white">Dubai to Russia Guide</a></li>
-                        <li><a href="/blog/shipping-to-st-petersburg-from-dubai/" class="text-gray-400 hover:text-white">St. Petersburg</a></li>
-                        <li><a href="/blog/customs-clearance-dubai-to-russia/" class="text-gray-400 hover:text-white">Customs Clearance</a></li>
-                        <li><a href="/blog/shipping-cost-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Cost</a></li>
-                        <li><a href="/blog/shipping-time-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Time</a></li>
+                        <!-- <li><a href="/blog/shipping-to-st-petersburg-from-dubai/" class="text-gray-400 hover:text-white">St. Petersburg</a></li> -->
+                        <!-- <li><a href="/blog/customs-clearance-dubai-to-russia/" class="text-gray-400 hover:text-white">Customs Clearance</a></li> -->
+                        <!-- <li><a href="/blog/shipping-cost-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Cost</a></li> -->
+                        <!-- <li><a href="/blog/shipping-time-dubai-to-russia/" class="text-gray-400 hover:text-white">Shipping Time</a></li> -->
                     </ul>
                 </div>
                 
